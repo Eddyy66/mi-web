@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Organigrama Institucional</title>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f9fb;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    text-align: center;
+    color: #222;
+    margin: 25px 0 10px;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .orgchart-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0 40px;
+  }
+
+  .orgchart {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0 40px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeDown 1s ease forwards;
+  }
+
+  @keyframes fadeDown {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  ul {
+    padding-top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  li {
+    list-style: none;
+    text-align: center;
+    position: relative;
+    padding: 25px 10px 0 10px;
+  }
+
+  li::before, li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border-top: 1.8px solid #aaa;
+    width: 50%;
+    height: 18px;
+  }
+
+  li::before {
+    right: 50%;
+    border-radius: 10px 0 0 0;
+    border-left: 1.8px solid #aaa;
+  }
+
+  li::after {
+    left: 50%;
+    border-radius: 0 10px 0 0;
+    border-right: 1.8px solid #aaa;
+  }
+
+  li:only-child::before,
+  li:only-child::after { display: none; }
+
+  li ul::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 1.8px solid #aaa;
+    height: 18px;
+  }
+
+  /* ======== CAJAS ADAPTATIVAS ======== */
+  li > div {
+    display: inline-block;       
+    padding: 8px 14px;           
+    border-radius: 10px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-size: 14px;
+    transition: all 0.25s ease;
+    animation: fadeDown 0.8s ease both;
+    word-wrap: break-word;       
+    white-space: normal;          /* permite quiebre de línea natural */
+    min-width: 120px;             /* opcional: evitar cajas demasiado pequeñas */
+    max-width: 300px;             /* mayor que antes, para textos largos */
+  }
+
+  li > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+
+  li small {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 3px;
+  }
+
+  .presidente { background: linear-gradient(135deg, #dfe6e9, #b2bec3); font-weight: bold; border-color: #636e72; }
+  .vicepresidente { background: linear-gradient(135deg, #cfd9df, #e2ebf0); font-weight: bold; border-color: #8395a7; }
+  .investigacion { background: linear-gradient(135deg, #fff69b, #ffe066); border-color: #d4b400; }
+  .comunicacion { background: linear-gradient(135deg, #9ecbff, #6ec6ff); border-color: #4a90e2; }
+  .revision { background: linear-gradient(135deg, #c2f5c2, #9be7a0); border-color: #76b947; }
+  .pedagogico { background: linear-gradient(135deg, #ffccd2, #ffb6b9); border-color: #e17055; }
+  .finanzas { background: linear-gradient(135deg, #ffd8a6, #ffa07a); border-color: #f0932b; }
+
+  .directores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .orgchart-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .orgchart-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+  }
+  .orgchart-container::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+</style>
+</head>
+<body>
+
+<h1>Organigrama SOCIDEFOM</h1>
+
+<div class="orgchart-container">
+  <div class="orgchart">
+    <ul>
+      <li>
+        <div class="presidente">Presidente / Director General</div>
+        <ul>
+          <li>
+            <div class="vicepresidente">Vicepresidente</div>
+            <ul class="directores">
+              <li>
+                <div class="investigacion">Director de Investigación<br><small>Estudiante y Docente</small></div>
+                <ul>
+                  <li>
+                    <div class="investigacion">Comisión de Proyectos</div>
+                    <ul>
+                      <li><div class="investigacion">Delegado de APV</div></li>
+                      <li><div class="investigacion">Delegado de CFS</div></li>
+                      <li><div class="investigacion">Delegado Educación Especial</div></li>
+                      <li><div class="investigacion">Delegado Biología</div></li>
+                    </ul>
+                  </li>
+                  <li><div class="investigacion">Comisión de Asesoría y Tutoría de Investigaciones</div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="comunicacion">Director de Comunicación<br><small>Estudiante y Docente</small></div>
+                <ul>
+                  <li><div class="comunicacion">Comisión de Derechos de Autor</div></li>
+                  <li><div class="comunicacion">Comisión de Relaciones Interinstitucionales</div></li>
+                  <li><div class="comunicacion">Comisión de Ajustes y Publicación</div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="revision">Director de Revisión y Edición<br><small>Estudiante y Docente</small></div>
+                <ul>
+                  <li><div class="revision">Comisión de Revisión y Estilo</div></li>
+                  <li><div class="revision">Comisión de Edición</div></li>
+                  <li><div class="revision">Comisión Anti Plagio</div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="pedagogico">Director Pedagógico<br><small>Estudiante y Docente</small></div>
+                <ul>
+                  <li><div class="pedagogico">Comisión Inclusiva</div></li>
+                  <li><div class="pedagogico">Comisión de Fortalecimiento Académico</div></li>
+                  <li><div class="pedagogico">Comisión de Eventos Académicos</div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="finanzas">Director de Finanzas<br><small>Estudiante y Docente</small></div>
+                <ul>
+                  <li><div class="finanzas">Comisión de Recaudación</div></li>
+                  <li><div class="finanzas">Comisión de Contabilidad</div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
