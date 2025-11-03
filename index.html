@@ -1,215 +1,151 @@
-<!DOCTYPE html>
+<!--
+  Sitio: Sociedad Científica Docente - Estudiantil SOCIDEFOM
+  Basado en: PROYECTO DE CREACIÓN DE LA SOCIEDAD CIENTÍFICA ESTUDIANTIL DE LA UNIDAD ACADÉMICA CERCADO.
+  Fuente original (subida por el usuario). :contentReference[oaicite:0]{index=0}
+-->
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Organigrama Institucional</title>
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    background-color: #f8f9fb;
-    overflow-x: hidden;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SOCIDEFOM — Sociedad Científica Docente - Estudiantil</title>
 
-  h1 {
-    text-align: center;
-    color: #222;
-    margin: 25px 0 10px;
-    font-size: 26px;
-    font-weight: 600;
-  }
+  <!-- Recursos pedidos por el usuario -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/dashboard/stylesheets/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
 
-  .orgchart-container {
-    width: 100%;
-    overflow-x: auto;
-    padding: 20px 0 40px;
-  }
+  <!-- Preload / prerender para las otras secciones -->
+  <link rel="prerender" href="organizacion.html">
+  <link rel="prerender" href="publicaciones.html">
+  <link rel="prerender" href="contacto.html">
 
-  .orgchart {
-    display: inline-block;
-    white-space: nowrap;
-    padding: 0 40px;
-    position: relative;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeDown 1s ease forwards;
-  }
+  <!-- Hojas locales -->
+  <link href="css/fonts.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
-  @keyframes fadeDown {
-    0% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-
-  ul {
-    padding-top: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-  }
-
-  li {
-    list-style: none;
-    text-align: center;
-    position: relative;
-    padding: 25px 10px 0 10px;
-  }
-
-  li::before, li::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    border-top: 1.8px solid #aaa;
-    width: 50%;
-    height: 18px;
-  }
-
-  li::before {
-    right: 50%;
-    border-radius: 10px 0 0 0;
-    border-left: 1.8px solid #aaa;
-  }
-
-  li::after {
-    left: 50%;
-    border-radius: 0 10px 0 0;
-    border-right: 1.8px solid #aaa;
-  }
-
-  li:only-child::before,
-  li:only-child::after { display: none; }
-
-  li ul::before {
-    content: '';
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 1.8px solid #aaa;
-    height: 18px;
-  }
-
-  /* ======== CAJAS ADAPTATIVAS ======== */
-  li > div {
-    display: inline-block;       
-    padding: 8px 14px;           
-    border-radius: 10px;
-    border: 1px solid #bbb;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    font-size: 14px;
-    transition: all 0.25s ease;
-    animation: fadeDown 0.8s ease both;
-    word-wrap: break-word;       
-    white-space: normal;          /* permite quiebre de línea natural */
-    min-width: 120px;             /* opcional: evitar cajas demasiado pequeñas */
-    max-width: 300px;             /* mayor que antes, para textos largos */
-  }
-
-  li > div:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  }
-
-  li small {
-    display: block;
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 3px;
-  }
-
-  .presidente { background: linear-gradient(135deg, #dfe6e9, #b2bec3); font-weight: bold; border-color: #636e72; }
-  .vicepresidente { background: linear-gradient(135deg, #cfd9df, #e2ebf0); font-weight: bold; border-color: #8395a7; }
-  .investigacion { background: linear-gradient(135deg, #fff69b, #ffe066); border-color: #d4b400; }
-  .comunicacion { background: linear-gradient(135deg, #9ecbff, #6ec6ff); border-color: #4a90e2; }
-  .revision { background: linear-gradient(135deg, #c2f5c2, #9be7a0); border-color: #76b947; }
-  .pedagogico { background: linear-gradient(135deg, #ffccd2, #ffb6b9); border-color: #e17055; }
-  .finanzas { background: linear-gradient(135deg, #ffd8a6, #ffa07a); border-color: #f0932b; }
-
-  .directores {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-  }
-
-  .orgchart-container::-webkit-scrollbar {
-    height: 8px;
-  }
-  .orgchart-container::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 5px;
-  }
-  .orgchart-container::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
-</style>
 </head>
-<body>
+<body class="bg-page">
 
-<h1>Organigrama SOCIDEFOM</h1>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 shadow-sm sticky-top" style="backdrop-filter: blur(4px); background: rgba(255,255,255,0.6);">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.png" alt="Logo SOCIDEFOM" class="logo me-2" />
+        <div>
+          <div class="h5 mb-0 brand-title">SOCIDEFOM</div>
+          <small class="text-muted brand-sub">Sociedad Científica Docente - Estudiantil</small>
+        </div>
+      </a>
 
-<div class="orgchart-container">
-  <div class="orgchart">
-    <ul>
-      <li>
-        <div class="presidente">Presidente / Director General</div>
-        <ul>
-          <li>
-            <div class="vicepresidente">Vicepresidente</div>
-            <ul class="directores">
-              <li>
-                <div class="investigacion">Director de Investigación<br><small>Estudiante y Docente</small></div>
-                <ul>
-                  <li>
-                    <div class="investigacion">Comisión de Proyectos</div>
-                    <ul>
-                      <li><div class="investigacion">Delegado de APV</div></li>
-                      <li><div class="investigacion">Delegado de CFS</div></li>
-                      <li><div class="investigacion">Delegado Educación Especial</div></li>
-                      <li><div class="investigacion">Delegado Biología</div></li>
-                    </ul>
-                  </li>
-                  <li><div class="investigacion">Comisión de Asesoría y Tutoría de Investigaciones</div></li>
-                </ul>
-              </li>
-              <li>
-                <div class="comunicacion">Director de Comunicación<br><small>Estudiante y Docente</small></div>
-                <ul>
-                  <li><div class="comunicacion">Comisión de Derechos de Autor</div></li>
-                  <li><div class="comunicacion">Comisión de Relaciones Interinstitucionales</div></li>
-                  <li><div class="comunicacion">Comisión de Ajustes y Publicación</div></li>
-                </ul>
-              </li>
-              <li>
-                <div class="revision">Director de Revisión y Edición<br><small>Estudiante y Docente</small></div>
-                <ul>
-                  <li><div class="revision">Comisión de Revisión y Estilo</div></li>
-                  <li><div class="revision">Comisión de Edición</div></li>
-                  <li><div class="revision">Comisión Anti Plagio</div></li>
-                </ul>
-              </li>
-              <li>
-                <div class="pedagogico">Director Pedagógico<br><small>Estudiante y Docente</small></div>
-                <ul>
-                  <li><div class="pedagogico">Comisión Inclusiva</div></li>
-                  <li><div class="pedagogico">Comisión de Fortalecimiento Académico</div></li>
-                  <li><div class="pedagogico">Comisión de Eventos Académicos</div></li>
-                </ul>
-              </li>
-              <li>
-                <div class="finanzas">Director de Finanzas<br><small>Estudiante y Docente</small></div>
-                <ul>
-                  <li><div class="finanzas">Comisión de Recaudación</div></li>
-                  <li><div class="finanzas">Comisión de Contabilidad</div></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html">INICIO</a></li>
+          <li class="nav-item"><a class="nav-link" href="organizacion.html">ORGANIZACIÓN</a></li>
+          <li class="nav-item"><a class="nav-link" href="publicaciones.html">PUBLICACIONES</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
         </ul>
-      </li>
-    </ul>
-  </div>
-</div>
+      </div>
+    </div>
+  </nav>
 
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold">Sociedad Científica Docente - Estudiantil <span class="accent">SOCIDEFOM</span></h1>
+          <p class="lead lead-hero">"Investigar es extender la conciencia hacia lo desconocido: somos luz que ilumina preguntas para convertirlas en sentido." </p>
+          <p class="mb-4 text-muted">Una comunidad interdisciplinaria que promueve la investigación pedagógica, la producción intelectual y la formación crítica de futuras y futuros docentes.</p>
+          <a href="organizacion.html" class="btn btn-gold btn-lg me-2"><i class="bi bi-people-fill me-1"></i>Conócenos</a>
+          <a href="publicaciones.html" class="btn btn-outline-dark btn-lg"><i class="bi bi-journal-text me-1"></i>Revista & Publicaciones</a>
+        </div>
+
+        <div class="col-lg-5 mt-4 mt-lg-0">
+          <div class="card shadow card-hero">
+            <div class="card-body">
+              <h5 class="card-title">Misión</h5>
+              <p class="card-text">Fortalecer la cultura investigativa y la producción académico-artística de estudiantes y docentes, generando espacios de escritura, revisión y difusión en clave pedagógica y comunitaria.</p>
+
+              <hr>
+
+              <h5 class="card-title">Visión</h5>
+              <p class="card-text">Ser una referencia local y regional de investigación docente-estudiantil que articule saberes y proyectos con impacto comunitario y educativo.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIONES -->
+  <main class="container my-5">
+    <section class="row g-4">
+      <article class="col-md-6">
+        <div class="card h-100 elegant-card">
+          <div class="card-body">
+            <h4 class="card-title">Ejes de la SOCIDEFOM</h4>
+            <ul>
+              <li><strong>Investigación y producción académica:</strong> Proyectos, artículos y reflexiones pedagógicas.</li>
+              <li><strong>Formación:</strong> Talleres en metodología, escritura y divulgación científica.</li>
+              <li><strong>Publicaciones:</strong> Revista estudiantil digital e impresa.</li>
+              <li><strong>Extensión:</strong> Vinculación con comunidades y actividades culturales.</li>
+            </ul>
+            <a href="organizacion.html" class="stretched-link muted-link">Ver estructura organizativa</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-md-6">
+        <div class="card h-100 elegant-card">
+          <div class="card-body">
+            <h4 class="card-title">Convocatorias & Eventos</h4>
+            <p class="text-muted">Calendario de talleres, recepción de trabajos y jornadas académicas. Mantente informado en la sección de Publicaciones.</p>
+            <a href="publicaciones.html" class="stretched-link muted-link">Ir a Publicaciones</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="section-title">Por qué SOCIDEFOM</h3>
+          <p>Porque la investigación docente no es un lujo sino una práctica formativa: aquí se aprende haciendo, escribiendo y compartiendo. Nuestra propuesta es coherente con el Modelo Educativo Sociocomunitario Productivo y la Ley 070, apostando a la producción de conocimiento pertinente.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="cta-box p-3 shadow-sm">
+            <h6>Únete</h6>
+            <p class="small text-muted mb-2">Si eres estudiante o docente y quieres participar, contacta al equipo organizador.</p>
+            <a href="contacto.html" class="btn btn-outline-dark btn-sm">Contactar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer mt-5 py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <small class="text-muted">© <strong>SOCIDEFOM</strong> — Sociedad Científica Docente - Estudiantil</small><br>
+        <small class="text-muted">Basado en proyecto institucional. :contentReference[oaicite:1]{index=1}</small>
+      </div>
+      <div>
+        <a href="https://www.facebook.com" class="me-2 text-muted"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com" class="me-2 text-muted"><i class="bi bi-instagram"></i></a>
+        <a href="mailto:info@socidefom.edu.bo" class="text-muted"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
