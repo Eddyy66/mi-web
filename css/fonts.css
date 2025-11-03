@@ -1,0 +1,23 @@
+/* fonts.css - declara fuentes (usa Google Fonts si tienes conexión)
+   Puedes sustituir con links a GoogleFonts en el head si lo prefieres:
+   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+*/
+
+@font-face {
+  font-family: "Lora";
+  src: local("Lora"), local("Georgia");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather"), local("Georgia");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Basic fallback mapping */
+body { font-family: "Lora", "Georgia", serif; }
+h1,h2,h3,h4,h5,h6 { font-family: "Merriweather", "Georgia", serif; }
