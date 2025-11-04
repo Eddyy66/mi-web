@@ -34,7 +34,7 @@ body.bg-page{
 }
 
 /* Logo size */
-.logo {
+.logo2 {
   width: 8%;              /* ancho relativo al contenedor del nav */
   height: auto;            /* mantiene proporción original del logo */
   object-fit: contain;     /* evita distorsión */
@@ -131,6 +131,7 @@ a:focus, button:focus, input:focus, textarea:focus{
   margin-bottom: 0.25rem;
   font-weight: 600;
 }
+
 
 
 
