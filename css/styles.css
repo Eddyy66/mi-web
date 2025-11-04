@@ -35,8 +35,8 @@ body.bg-page{
 
 /* Logo size */
 .logo{
-  width:50px;
-  height:50px;
+  width:10px;
+  height:10px;
   object-fit:contain;
   border-radius:6px;
   box-shadow: 0 2px 8px rgba(30,30,47,0.06);
@@ -130,3 +130,4 @@ a:focus, button:focus, input:focus, textarea:focus{
   margin-bottom: 0.25rem;
   font-weight: 600;
 }
+
